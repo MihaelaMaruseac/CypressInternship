@@ -28,7 +28,6 @@ describe('Register new customer', () => {
         cy.contains('Continue').click()
   
         cy.url().should('include', 'account/create')
-        cy.get('body').should('have.css', 'background-color', '#f2dede')
         cy.log('An alert has appeared')
       })
 })

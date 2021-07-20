@@ -57,6 +57,8 @@ describe('Check the Register functionality', () => {
       cy.get('[type="checkbox"]').check('1')
 
       cy.contains('Continue').click()
+      cy.url().should('include', 'account/create')
+      cy.log('An alert has appeared')
     })
 
     it('3. Register with invalid confirm password', () => {
