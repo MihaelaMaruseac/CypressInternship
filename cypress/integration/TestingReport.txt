@@ -1,6 +1,0 @@
-
-
-        II. CHECK LOGIN FUNCTIONALITY
-
-All 6 tests passed but I suggest that the error's content being more specific. E.g. when both fields are blank, there is 
-displayed the same error like both fields are completed: "Error: Incorrect login or password provided." 

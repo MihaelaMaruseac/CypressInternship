@@ -1,0 +1,15 @@
+        I. CHECK REGISTER FUNCTIONALITY
+
+TC 10: 
+Address and city fields don't throw error when they are completed with space character.
+Phone number is valid even if is formed by 2 numbers.
+
+TC 8 & 9:
+From tests 8 and 9 it is seen that the importance of the boxes differs and that is why the alerts also differ and not 
+everything we expect always appears. That's why we can't just rely on testing the content of alerts and that's why I 
+test alerts if the url is as expected.
+
+        II. CHECK LOGIN FUNCTIONALITY
+
+All 6 tests passed but I suggest that the error's content being more specific. E.g. when both fields are blank, there is 
+displayed the same error like both fields are completed: "Error: Incorrect login or password provided." 
