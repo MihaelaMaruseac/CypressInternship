@@ -31,7 +31,10 @@ describe('Finalize a purchase & check the order status', () => {
             cy.get('.mb40 > :nth-child(4) > a').click()
             cy.get('.contentpanel > :nth-child(1) > .table > tbody > tr > :nth-child(1) > :nth-child(1)')
             //save OrderID
-
+            cy.get("#maincontainer > div > div > div > div > div:nth-child(1) > table > tbody > tr > td:nth-child(1)").invoke("text").then((text)=>{
+                console.log(text.slice())
+            })
+        
             // cy.get('#maincontainer > div > div > div > div > div:nth-child(1) > table > tbody > tr > td:nth-child(1) > br:nth-child(2)')
             //     .invoke('val')
             //     .then(orderID => cy.log(orderID));
