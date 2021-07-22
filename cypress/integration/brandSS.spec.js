@@ -36,6 +36,22 @@ describe('Brand selection and sorting', () => {
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
             cy.url().should('include', '17&sort=p.price-ASC&limit=20')
 
+            const elements = [];
+            const unsortedElements = [];
+            cy.get('.price').each(($el, $index) =>{
+                if($el[0].parentNode.className === 'pricetag jumbotron'){ // to remove duplicates
+                    elements.push($el);
+                    unsortedElements.push($el)
+                }
+            }).then(() => {
+                elements.sort((a,b)=>{
+                    const firstValue = parseFloat(a[0].children[0].innerHTML.split('$')[1]); // children[0] has either oneprice class or pricenew class
+                    const secondValue = parseFloat(b[0].children[0].innerHTML.split('$')[1]);
+                    return firstValue-secondValue;
+                });
+                cy.wrap(unsortedElements).should('deep.eq', elements);
+            })
+
         })
 
         it('3. Select and sort products for MAC brand', () => {
