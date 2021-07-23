@@ -1,5 +1,11 @@
 /// <reference types="cypress" />
 
+const fName = `M_${Date.now()}`
+  const emailAddress = `test_${Date.now()}@gmail.com`
+  const phoneNumber = Date.now()
+  const password = 'Name123!'
+  let address1, address2, orderId, status
+
 describe('Check the Cart', () => {
     beforeEach(() => {
       
@@ -17,11 +23,6 @@ describe('Check the Cart', () => {
         cy.get('#categorymenu').contains('Home').click()
     })
 
-  const fName = `M_${Date.now()}`
-  const emailAddress = `test_${Date.now()}@gmail.com`
-  const phoneNumber = Date.now()
-  const password = 'Name123!'
-  let address1, address2, orderId, status
 
     it('Register and login new customer with valid and unic data', () => {
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
@@ -101,14 +102,14 @@ describe('Check the Cart', () => {
             // orderId = text.replace('Order ID: #','').trim()
             orderId = text.substring(10).split('#')[1]
             cy.log(orderId)
-        })
-        cy.get('#topnav > .form-control').select('Check Your Order')
-        //cy.get('[style="width: 49%; float: left; margin-bottom: 2px;"]').should('include', orderId)
-        expect('[style="width: 49%; float: left; margin-bottom: 2px;"]').text.to.contain(`${orderId}`)
-        cy.get('[style="width: 49%; float: right; margin-bottom: 2px; text-align: right;"]').invoke("text").then((text)=>{
-            status = text  
-            cy.log(status)
-        cy.get('[style="width: 49%; float: right; margin-bottom: 2px; text-align: right;"]').contains('Pending')
+            cy.get('#topnav > .form-control').select('Check Your Order')
+            //cy.get('[style="width: 49%; float: left; margin-bottom: 2px;"]').should('include', orderId)
+            cy.get("#maincontainer > div > div.col-md-9.col-xs-12.mt20 > div > div > div.container-fluid.mt20").find('[style="width: 49%; float: left; margin-bottom: 2px;"]').contains(`${orderId}`)
+            cy.get('[style="width: 49%; float: right; margin-bottom: 2px; text-align: right;"]').invoke("text").then((text)=>{
+                status = text  
+                cy.log(status)
+            cy.get('[style="width: 49%; float: right; margin-bottom: 2px; text-align: right;"]').contains('Pending')
+            })
         })
     })
 

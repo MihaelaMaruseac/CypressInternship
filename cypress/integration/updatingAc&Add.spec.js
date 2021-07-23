@@ -24,7 +24,9 @@ describe('Updating Account details', () => {
         cy.get('#AccountFrm_lastname').should('have.value','Test')
         cy.get('#AccountFrm_email').should('have.value','test123@gmail.com')
         cy.get('#AccountFrm_telephone').should('have.value', '2345765432')
-        // retype the email address for avoiding fail check oreder status
+        // reupdate to old values
+        cy.get('#AccountFrm_firstname').clear().type('Software').should('have.value','Software')
+        cy.get('#AccountFrm_lastname').clear().type('Testing').should('have.value','Testing')
         cy.get('#AccountFrm_email').clear().type('testing@gmail.com').should('have.value','testing@gmail.com')
         cy.get('.col-md-12 > .btn-orange').click()
     })
