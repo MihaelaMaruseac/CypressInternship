@@ -103,7 +103,7 @@ describe('Brand selection and sorting', () => {
             cy.url().should('include', 'id=14&sort=p.price-ASC&limit=20')
         })
 
-        it.only('9. Check out of stock items', () =>{
+        it('9. Check out of stock items', () =>{
             cy.get('.nostock').contains('Out of Stock').click()
             cy.log('Find out of stock product')
         })

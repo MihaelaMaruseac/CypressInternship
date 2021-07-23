@@ -8,21 +8,16 @@ const password2 = 'Change1!'
 
 describe('Check the Cart', () => {
     beforeEach(() => {
-      
         cy.visit('/')
-
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
         cy.get('input[name="loginname"]').type(fName)
         cy.get('input[name="password"]').type(password)        
         cy.get('button[type="submit"][title="Login"]').click()
         cy.get('#categorymenu').contains('Home').click()
     })
 
-
     it('Register and login new customer with valid and unic data', () => {
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
         cy.get('#accountFrm > fieldset > .btn').contains('Continue').click()        
         cy.get('input[name="firstname"]').type(fName)
         cy.get('input[name="lastname"]').type('Testing!~!')
@@ -38,11 +33,9 @@ describe('Check the Cart', () => {
         cy.get('input[name="confirm"]').type(password)
         cy.get('[type="radio"]').check('0')
         cy.get('[type="checkbox"]').check('1')
-    
         cy.contains('Continue').click()
      })
     
-  
     it('1. Add 2 rating highest items with at least 4 stars from Specials category to cart', () => {
         cy.get('#topnav > .form-control').select('Specials')
         cy.get('#sort').select('Rating Highest').should('have.value','rating-DESC')
@@ -50,7 +43,6 @@ describe('Check the Cart', () => {
         cy.get('.rate > :nth-child(4)').should('have.class', 'on')
         cy.get('#option306').select('Lacewood').should('have.value', '619')
         cy.get('.cart').click()
-
         cy.get('#topnav > .form-control').select('Specials')
         cy.get('#sort').select('Rating Highest').should('have.value','rating-DESC')
         cy.get(':nth-child(2) > .thumbnail > :nth-child(2) > img').click()
@@ -68,7 +60,7 @@ describe('Check the Cart', () => {
         cy.get('.info_links_footer > :nth-child(5) > a').click()
         cy.get('#ContactUsFrm_first_name').type(fName)
         cy.get('#ContactUsFrm_email').type(emailAddress)
-        cy.get('#ContactUsFrm_enquiry').type('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.')
+        cy.get('#ContactUsFrm_enquiry').type('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
         cy.get('.col-md-6 > .btn').click()
         cy.get('.mb40 > :nth-child(3)').should('contain','Your enquiry has been successfully sent to the store owner!')
     })

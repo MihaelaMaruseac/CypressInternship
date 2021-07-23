@@ -6,15 +6,11 @@ describe('Check the Register functionality', () => {
   })
 
     it('1. Register new customer with valid and unic data', () => {
-      cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-
-      // cy.contains('Continue').click()
-      cy.get('#accountFrm > fieldset > .btn').contains('Continue').click()
-
       const fName = `M_${Date.now()}`
       const emailAddress = `test_${Date.now()}@gmail.com`
       const phoneNumber = Date.now()
-
+      cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
+      cy.get('#accountFrm > fieldset > .btn').contains('Continue').click()
       cy.get('input[name="firstname"]').type(fName)
       cy.get('input[name="lastname"]').type('Testing!~!')
       cy.get('[id="AccountFrm_email"]').type(emailAddress)
@@ -29,22 +25,15 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('Name123!')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
-      //cy.get('.col-md-2 > .btn').contains('Continue')
-
       cy.url().should('include', 'account/success')
       cy.get('.maintext').contains('Your Account Has Been Created!')
       cy.log('Registration successful')
     })
 
-    //account used for testing
     it('2. Register an existing customer', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-      
-      //cy.get('[data-top="644"]').should('have.css' 'title' 'Continue')
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Software')
       cy.get('input[name="lastname"]').type('Testing')
       cy.get('[id="AccountFrm_email"]').type('testing@gmail.com')
@@ -59,7 +48,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('Test123!')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Error: E-Mail Address is already registered!')
@@ -68,9 +56,7 @@ describe('Check the Register functionality', () => {
 
     it('3. Register with invalid confirm password', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Mobile')
       cy.get('input[name="lastname"]').type('Testing')
       cy.get('[id="AccountFrm_email"]').type('mob_testing@gmail.com')
@@ -85,9 +71,7 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('test')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
-
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Password confirmation does not match password!')
       cy.log('Registration unsuccessful')
@@ -96,9 +80,7 @@ describe('Check the Register functionality', () => {
 
     it('4. Register with invalid data', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Mobile321')
       cy.get('input[name="lastname"]').type('Testing!~!')
       cy.get('[id="AccountFrm_email"]').type('mob_testing')
@@ -112,7 +94,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('test')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -126,9 +107,7 @@ describe('Check the Register functionality', () => {
 
     it('5. Register without check the radio box and the checkbox', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Mobile')
       cy.get('input[name="lastname"]').type('Testing')
       cy.get('[id="AccountFrm_email"]').type('mob_testing@gmail.com')
@@ -141,7 +120,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="loginname"]').type('Testing02')
       cy.get('input[name="password"]').type('Test123!')
       cy.get('input[name="confirm"]').type('Test123!')
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -151,9 +129,7 @@ describe('Check the Register functionality', () => {
 
     it('6. Register without complete some of the address mandatory fields', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Mobile')
       cy.get('input[name="lastname"]').type('Testing')
       cy.get('[id="AccountFrm_email"]').type('mob_testing@gmail.com')
@@ -165,7 +141,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('Test123!')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -177,9 +152,7 @@ describe('Check the Register functionality', () => {
 
     it('7. Register with invalid email address ', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-      
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('Soft')
       cy.get('input[name="lastname"]').type('Testing')
       cy.get('[id="AccountFrm_email"]').type('testing')
@@ -194,7 +167,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('Test123!')
       cy.get('[type="radio"]').check('0')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -204,9 +176,7 @@ describe('Check the Register functionality', () => {
 
     it('8. Register with blank and empty fields ', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-      
       cy.contains('Continue').click()
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -216,11 +186,8 @@ describe('Check the Register functionality', () => {
 
     it('9. Register with empty fields and checked Privacy Policy checkbox', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-      
       cy.contains('Continue').click()
-
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
 
       cy.url().should('include', 'account/create')
@@ -236,11 +203,11 @@ describe('Check the Register functionality', () => {
       cy.log('Registration unsuccessful')
     })
   
-    it('10. Register with short phone number, address and city fields completed with space character ', () => {
+    // Test 10 normally should pass but the site has a bug when someone try to register with a short phone number
+    // and when the address's mandatory fields are completed with space character
+    it('10. !!! Register with short phone number, address and city fields completed with space character !!! ', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-      
       cy.contains('Continue').click()
-
       cy.get('input[name="firstname"]').type('User')
       cy.get('input[name="lastname"]').type('y   s')
       cy.get('[id="AccountFrm_email"]').type(`fake_${Date.now()}@gmail.com`)
@@ -255,7 +222,6 @@ describe('Check the Register functionality', () => {
       cy.get('input[name="confirm"]').type('rowtype')
       cy.get('[type="radio"]').check('1')
       cy.get('[type="checkbox"]').check('1')
-
       cy.contains('Continue').click()
 
       cy.url().should('not.include', 'account/success')

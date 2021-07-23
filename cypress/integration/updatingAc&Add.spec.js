@@ -3,7 +3,6 @@
 describe('Updating Account details', () => {
     beforeEach(() => {
         cy.visit('/')
-
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
         cy.get('input[name="loginname"]').type('Testing01')
         cy.get('input[name="password"]').type('Test123!')

@@ -8,25 +8,16 @@ const fName = `M_${Date.now()}`
 
 describe('Check the Cart', () => {
     beforeEach(() => {
-      
         cy.visit('/')
-        // cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-        // cy.get('input[name="loginname"]').type('Testing01')
-        // cy.get('input[name="password"]').type('Test123!')
-        // cy.get('button[type="submit"][title="Login"]').click()
-
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
         cy.get('input[name="loginname"]').type(fName)
         cy.get('input[name="password"]').type(password)        
         cy.get('button[type="submit"][title="Login"]').click()
         cy.get('#categorymenu').contains('Home').click()
     })
 
-
     it('Register and login new customer with valid and unic data', () => {
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
-    
         cy.get('#accountFrm > fieldset > .btn').contains('Continue').click()        
         cy.get('input[name="firstname"]').type(fName)
         cy.get('input[name="lastname"]').type('Testing!~!')
@@ -42,10 +33,8 @@ describe('Check the Cart', () => {
         cy.get('input[name="confirm"]').type(password)
         cy.get('[type="radio"]').check('0')
         cy.get('[type="checkbox"]').check('1')
-    
         cy.contains('Continue').click()
      })
-    
   
     it('1. Add 4 items to cart', () => {
         // product from Apparel and Accesories category
@@ -74,7 +63,8 @@ describe('Check the Cart', () => {
         cy.get('#topnav > .form-control').select('Cart')
         cy.get('#cart > div > div.container-fluid.cart-info.product-list > table > tbody > tr:nth-child(1)').get(':nth-child(2) > :nth-child(7) > .btn').click()
         cy.get('.product-list').should('not.contain', 'Womens high heel point toe stiletto sandals ankle strap court shoes - Colour black')
-        // update cart quantity
+        // update cart quantity and verify the update
+        // I runed more times this test with this selector and it passed
         cy.get('#cart_quantity114').click().clear().type('2{enter}')
         cy.get('#cart_quantity114').should('have.value', '2')
         // verify if the address is the default one
@@ -82,28 +72,23 @@ describe('Check the Cart', () => {
         cy.get('#checkout_btn').click()
         cy.get('.mb40 > :nth-child(4) > a').click()
         cy.get(':nth-child(2) > address').invoke("text").then((text)=>{
-            cy.log("35: ", text)
             address2 = text  
             cy.log(address2)
         })
         // get the default address (address1)
         cy.get('.side_account_list > :nth-child(5) > a').click()
         cy.get('address').invoke("text").then((text)=>{
-            cy.log("35: ", text)
             address1 = text  
             cy.log(address1)
-        // verify the equality
             cy.wrap(address2).should('eq', address1);
         })
         //check the order status
         cy.get('.side_account_list > :nth-child(6) > a').click()
         cy.get('[style="width: 49%; float: left; margin-bottom: 2px;"]').invoke("text").then((text)=>{
             cy.log("id: ", text)
-            // orderId = text.replace('Order ID: #','').trim()
             orderId = text.substring(10).split('#')[1]
             cy.log(orderId)
             cy.get('#topnav > .form-control').select('Check Your Order')
-            //cy.get('[style="width: 49%; float: left; margin-bottom: 2px;"]').should('include', orderId)
             cy.get("#maincontainer > div > div.col-md-9.col-xs-12.mt20 > div > div > div.container-fluid.mt20").find('[style="width: 49%; float: left; margin-bottom: 2px;"]').contains(`${orderId}`)
             cy.get('[style="width: 49%; float: right; margin-bottom: 2px; text-align: right;"]').invoke("text").then((text)=>{
                 status = text  
@@ -112,6 +97,5 @@ describe('Check the Cart', () => {
             })
         })
     })
-
-       
+  
 })
