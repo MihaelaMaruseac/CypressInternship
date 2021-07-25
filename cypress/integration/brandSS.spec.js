@@ -39,13 +39,13 @@ describe('Brand selection and sorting', () => {
             const elements = [];
             const unsortedElements = [];
             cy.get('.price').each(($el, $index) =>{
-                if($el[0].parentNode.className === 'pricetag jumbotron'){ // to remove duplicates
+                if($el[0].parentNode.className === 'pricetag jumbotron'){ 
                     elements.push($el);
                     unsortedElements.push($el)
                 }
             }).then(() => {
                 elements.sort((a,b)=>{
-                    const firstValue = parseFloat(a[0].children[0].innerHTML.split('$')[1]); // children[0] has either oneprice class or pricenew class
+                    const firstValue = parseFloat(a[0].children[0].innerHTML.split('$')[1]); 
                     const secondValue = parseFloat(b[0].children[0].innerHTML.split('$')[1]);
                     return firstValue-secondValue;
                 });

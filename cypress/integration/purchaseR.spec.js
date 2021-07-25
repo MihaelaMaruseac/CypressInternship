@@ -64,9 +64,8 @@ describe('Check the Cart', () => {
         cy.get('#cart > div > div.container-fluid.cart-info.product-list > table > tbody > tr:nth-child(1)').get(':nth-child(2) > :nth-child(7) > .btn').click()
         cy.get('.product-list').should('not.contain', 'Womens high heel point toe stiletto sandals ankle strap court shoes - Colour black')
         // update cart quantity and verify the update
-        // I runed more times this test with this selector and it passed
-        cy.get('#cart_quantity114').click().clear().type('2{enter}')
-        cy.get('#cart_quantity114').should('have.value', '2')
+        cy.xpath('/html/body/div/div[2]/div/div/div/form/div/div[1]/table/tbody/tr[3]/td[5]/div/input').click().clear().type('2{enter}')
+        cy.xpath('/html/body/div/div[2]/div/div/div/form/div/div[1]/table/tbody/tr[3]/td[5]/div/input').should('have.value', '2')
         // verify if the address is the default one
         cy.get('#cart_checkout2').click()
         cy.get('#checkout_btn').click()

@@ -2,7 +2,7 @@
 
 describe('Check API', () => {
   beforeEach(() => {
-    cy.visit('https://automationteststore.com/')
+    cy.visit('/')
   })
 
     it('Check API Request', () => {

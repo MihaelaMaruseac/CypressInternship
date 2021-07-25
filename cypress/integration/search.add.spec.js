@@ -69,7 +69,5 @@ describe('Add an item to cart', () => {
             cy.get('.cart').click()
             cy.get('#topnav > .form-control').select('Cart')
             cy.get('#cart > div > div.container-fluid.cart-info.product-list > table > tbody > tr:nth-child(2)').should('exist')
-            // cy.get('.table > tbody > :nth-child(2) > :nth-child(2) > a').click()
-            // cy.url().should('include', 'product&product_id=66&key=66')
         })
 })

@@ -12,6 +12,9 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
+
+require('cypress-xpath')
+
 Cypress.Server.defaults({
     ignore: xhr => true 
      
