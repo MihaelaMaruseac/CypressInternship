@@ -6,7 +6,6 @@ describe('Brand selection and sorting', () => {
     })
   
         it('1. Select and sort products for Benefit brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(1) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -30,7 +29,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('2. Select and sort products for Pantene brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(2) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -55,7 +53,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('3. Select and sort products for MAC brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(3) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -64,7 +61,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('4. Select and sort products for Lancome brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(4) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -72,7 +68,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('5. Select and sort products for Giorgio Armani brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(6) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -80,7 +75,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('6. Select and sort products for Dove brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(7) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -88,7 +82,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('7. Select and sort products for Calvin Klein brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(8) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')
@@ -96,7 +89,6 @@ describe('Brand selection and sorting', () => {
         })
 
         it('8. Select and sort products for Bvlgari brand', () => {
-
             cy.get('#popularbrands > .container-fluid').should('contain', 'Brands Scrolling List')
             cy.get(':nth-child(9) > .image > a > .internal').click()
             cy.get('#sort').select('Price Low > High').should('have.value','p.price-ASC')

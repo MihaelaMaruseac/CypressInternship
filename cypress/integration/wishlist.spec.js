@@ -9,10 +9,10 @@ describe('Check the Wishlist', () => {
         cy.get('button[type="submit"][title="Login"]').click()
     })
 
-  const fName = `M_${Date.now()}`
-  const emailAddress = `test_${Date.now()}@gmail.com`
-  const phoneNumber = Date.now()
-  const password = 'Name123!'
+    const fName = `M_${Date.now()}`
+    const emailAddress = `test_${Date.now()}@gmail.com`
+    const phoneNumber = Date.now()
+    const password = 'Name123!'
 
     it('Register and login new customer with valid and unic data', () => {
         cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
@@ -34,7 +34,6 @@ describe('Check the Wishlist', () => {
         cy.contains('Continue').click()
      })
     
-  
     it('1. Add items to wishlist', () => {
         cy.get('#categorymenu').contains('Home').click()
         cy.get('#block_frame_featured_1769 > .thumbnails > :nth-child(1) > .thumbnail > :nth-child(1) > img').click()
@@ -61,6 +60,5 @@ describe('Check the Wishlist', () => {
         cy.get('.wishlist_50 > :nth-child(6) > .btn-default > .fa').click()
         cy.get('#maincontainer > div > div.col-md-9.col-xs-12.mt20 > div > div > div > table > tbody > tr.wishlist_50').should('not.exist')
         cy.get('.pull-right > .btn-default').contains('Continue Shopping')
-
     })
 })

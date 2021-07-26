@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 const fName = `M_${Date.now()}`
-  const emailAddress = `test_${Date.now()}@gmail.com`
-  const phoneNumber = Date.now()
-  const password = 'Name123!'
-  let address1, address2, orderId, status
+const emailAddress = `test_${Date.now()}@gmail.com`
+const phoneNumber = Date.now()
+const password = 'Name123!'
+let address1, address2, orderId, status
 
 describe('Check the Cart', () => {
     beforeEach(() => {
@@ -74,7 +74,7 @@ describe('Check the Cart', () => {
             address2 = text  
             cy.log(address2)
         })
-        // get the default address (address1)
+            // get the default address (address1)
         cy.get('.side_account_list > :nth-child(5) > a').click()
         cy.get('address').invoke("text").then((text)=>{
             address1 = text  
@@ -96,5 +96,4 @@ describe('Check the Cart', () => {
             })
         })
     })
-  
 })

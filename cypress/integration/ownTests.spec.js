@@ -1,4 +1,4 @@
-import {Contact, General, Login, Notification, Password, Register, Specials} from './POM.spec.js'
+import {Contact, General, Login, Notification, Password, Register, Specials} from '../support/POM/POM.spec.js'
 /// <reference types="cypress" />
 
 const fName = `M_${Date.now()}`

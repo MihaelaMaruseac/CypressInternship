@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { General, Login } from "./POM.spec"
+import { General, Login } from "../support/POM/POM.spec"
 
 describe('Check the Login functionality', () => {
     beforeEach(() => {
@@ -63,6 +63,5 @@ describe('Check the Login functionality', () => {
             cy.get('.alert').contains("Error: Incorrect login or password provided.")
             cy.log('Login unsuccesfully')
         })
-  
-  })
+})
   

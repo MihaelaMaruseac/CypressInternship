@@ -59,5 +59,4 @@ describe('Updating Account details', () => {
         cy.get('tr > .pull-right > .btn-default').click()
         cy.get('.alert').contains('Your address has been successfully deleted')
     })
-  
-  })
+})

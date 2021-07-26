@@ -73,5 +73,4 @@ describe('Finalize a purchase & check the order status', () => {
           cy.get('.col-md-12 > .btn-orange').click()
           cy.get('.has-error > .help-block').contains('Order ID is required field!')
         })
-
 })

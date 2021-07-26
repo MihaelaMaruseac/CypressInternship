@@ -1,4 +1,4 @@
-import {Register,Login, General}from './POM.spec.js'
+import {Register,Login, General}from '../support/POM/POM.spec.js'
 /// <reference types="cypress" />
 
 describe('Check the Register functionality', () => {
@@ -29,7 +29,6 @@ describe('Check the Register functionality', () => {
       Register.continue().click()
       General.getUrl().should('include', 'account/success')
       Register.getConfBox().contains('Your Account Has Been Created!')
-      cy.log('Registration successful')
     })
 
     it('2. Register an existing customer', () => {
@@ -52,7 +51,6 @@ describe('Check the Register functionality', () => {
       cy.contains('Continue').click()
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Error: E-Mail Address is already registered!')
-      cy.log('Registration unsuccessful')
     })
 
     it('3. Register with invalid confirm password', () => {
@@ -75,7 +73,6 @@ describe('Check the Register functionality', () => {
       cy.contains('Continue').click()
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Password confirmation does not match password!')
-      cy.log('Registration unsuccessful')
     })
   
 
@@ -103,7 +100,6 @@ describe('Check the Register functionality', () => {
       cy.get('.alert').contains('Please select a region / state!')
       cy.get('.alert').contains('Password must be between 4 and 20 characters!')
       cy.get('.alert').contains('Password confirmation does not match password!')
-      cy.log('Registration unsuccessful')
     })
 
     it('5. Register without check the radio box and the checkbox', () => {
@@ -125,7 +121,6 @@ describe('Check the Register functionality', () => {
 
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Error: You must agree to the Privacy Policy!')
-      cy.log('Registration unsuccessful')
     })
 
     it('6. Register without complete some of the address mandatory fields', () => {
@@ -148,7 +143,6 @@ describe('Check the Register functionality', () => {
       cy.get('.alert').contains('Address 1 must be between 3 and 128 characters!')
       cy.get('.alert').contains('Zip/postal code must be between 3 and 10 characters!')
       cy.get('.alert').contains('Please select a region / state!')
-      cy.log('Registration unsuccessful')
     })
 
     it('7. Register with invalid email address ', () => {
@@ -172,7 +166,6 @@ describe('Check the Register functionality', () => {
 
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Email Address does not appear to be valid!')
-      cy.log('Registration unsuccessful')
     })
 
     it('8. Register with blank and empty fields ', () => {
@@ -182,7 +175,6 @@ describe('Check the Register functionality', () => {
 
       cy.url().should('include', 'account/create')
       cy.get('.alert').contains('Error: You must agree to the Privacy Policy!')
-      cy.log('Registration unsuccessful')
     })
 
     it('9. Register with empty fields and checked Privacy Policy checkbox', () => {
@@ -201,12 +193,11 @@ describe('Check the Register functionality', () => {
       cy.get('.alert').contains('Zip/postal code must be between 3 and 10 characters!')
       cy.get('.alert').contains('Please select a region / state!')
       cy.get('.alert').contains('Password must be between 4 and 20 characters!')
-      cy.log('Registration unsuccessful')
     })
   
     // Test 10 normally should pass but the site has a bug when someone try to register with a short phone number
     // and when the address's mandatory fields are completed with space character
-    it('10. !!! Register with short phone number, address and city fields completed with space character !!! ', () => {
+    it('10. BUG!!! Register with short phone number, address and city fields completed with space character !!! ', () => {
       cy.get('a[href*="/index.php?rt=account/login"]').contains('Login or register').click()
       cy.contains('Continue').click()
       cy.get('input[name="firstname"]').type('User')
