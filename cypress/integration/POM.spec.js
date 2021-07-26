@@ -9,6 +9,9 @@ export class General{
     static getAlert(){
         return cy.get('.alert')
     }
+    static getUrl(){
+        return cy.url()
+    }
 }
 
 export class Login{
@@ -31,6 +34,9 @@ export class Login{
 
     static selectHomeButton(){
         return cy.get('#categorymenu')
+    }
+    static getBody(){
+        return cy.get('body')
     }
 }
 
@@ -94,6 +100,10 @@ export class Register{
     static continue(){
         return cy.contains('Continue')
     }
+
+    static getConfBox(){
+        return cy.get('.maintext')
+    }
 }
 
 export class Specials{
@@ -123,10 +133,6 @@ export class Specials{
 
     static getColCart(){
         return cy.get('.table > tbody > :nth-child(2) > :nth-child(2) > a')
-    }
-
-    static getUrl(){
-        return cy.url()
     }
 
     static getCartProd(){

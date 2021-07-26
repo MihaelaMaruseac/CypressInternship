@@ -1,4 +1,4 @@
-import {Contact, General, Login, Notification, Password, Register, Specials} from './POM.spec.js';
+import {Contact, General, Login, Notification, Password, Register, Specials} from './POM.spec.js'
 /// <reference types="cypress" />
 
 const fName = `M_${Date.now()}`
@@ -51,10 +51,10 @@ describe('Tests', () => {
         Specials.addToCart().click()
         // verify if the items was successfully added to cart
         Specials.getColCart().click()
-        Specials.getUrl().should('include', 'product&product_id=55&key=55:e8db34041472435dcc7f2a7d608a09ac')
+        General.getUrl().should('include', 'product&product_id=55&key=55:e8db34041472435dcc7f2a7d608a09ac')
         General.getMenu().select('Cart')
         Specials.getCartProd().click()
-        Specials.getUrl().should('include','product&product_id=93&key=93')
+        General.getUrl().should('include','product&product_id=93&key=93')
     })
 
     it('2. Check Contact us functionality', () =>{
